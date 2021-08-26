@@ -1,7 +1,7 @@
 const currentTask = process.env.npm_lifecycle_event;
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebpackManifestPlugin = require("webpack-manifest-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 const config = {
   entry: "./app/app.js",
@@ -47,8 +47,7 @@ if (currentTask == "build") {
   config.mode = "production";
   config.module.rules[0].use[0] = MiniCssExtractPlugin.loader;
   config.plugins.push(
-    new CompressionPlugin(),
-    new MiniCssExtractPlugin({ filename: "csutom.css" }),
+    new MiniCssExtractPlugin({ filename: "custom.css" }),
     new WebpackManifestPlugin()
   );
 }
